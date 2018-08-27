@@ -36,3 +36,9 @@ state 存组件的数据，改变state用setState()函数。此时，state变换
 
 1. .bind(this)
 2. 组件同名， this.setState可以只写一个参数~
+3. React.Fragment标签包裹~不要用div
+
+## 添加样式
+
+1. 行内样式，{{}}， 内层表示JS对象。
+2. JSX样式类，用className。
