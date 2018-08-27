@@ -1,15 +1,20 @@
-import React from 'react';
+import React from 'react'
 
 class TodoItem extends React.Component {
+    constructor(props){
+        super(props)
+        this.handleDelete = this.handleDelete.bind(this)
+    }
     handleDelete(){
         // 调用父组件的handleDelete方法
         this.props.handleDelete(this.props.index)
     }
     render() {
+        const {content} = this.props
         return (
-            <li onClick={this.handleDelete.bind(this)}>{this.props.content}</li>
+            <li onClick={this.handleDelete}>{content}</li>
         )
     }
 }
 
-export default TodoItem;
+export default TodoItem

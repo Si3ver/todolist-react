@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
-import TodoItem from './TodoItem';
+import React, {Component} from 'react'
+import TodoItem from './TodoItem'
 
 class TodoList extends Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
             list: [
                 'learn react',
@@ -12,6 +12,10 @@ class TodoList extends Component {
             ],
             inputValue: ''
         }
+
+        this.handleBtnClick = this.handleBtnClick.bind(this)
+        this.handleInputChange = this.handleInputChange.bind(this)
+        this.handleDelete = this.handleDelete.bind(this)
     }
     // 增加任务
     handleBtnClick() {
@@ -34,23 +38,31 @@ class TodoList extends Component {
             list
         })
     }
+
+    getTodoItems() {
+        return (
+            this.state.list.map((item, idx)=>{
+                return (
+                    <TodoItem key={idx} idx={idx} content={item} handleDelete={this.handleDelete} />
+                )
+            })
+        )
+    }
     render() {
         return( 
             <div> 
                 <div> 
-                    <input value={this.state.inputValue} onChange={this.handleInputChange.bind(this)}/>
-                    <button onClick = {this.handleBtnClick.bind(this)}> add</button>
+                    <input value={this.state.inputValue} onChange={this.handleInputChange}/>
+                    <button onClick = {this.handleBtnClick}> add</button>
                 </div> 
                 <ul> 
                     {
-                        this.state.list.map((item, idx)=>{
-                            return <TodoItem key={idx} idx={idx} content={item} handleDelete={this.handleDelete.bind(this)} />
-                        })
+                        this.getTodoItems()
                     }
                 </ul>
             </div>
-        );
+        )
     }
 }
 
-export default TodoList;
+export default TodoList
